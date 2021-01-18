@@ -17,7 +17,7 @@ client.on('message', message => {
     if (message.content === 'ping') {
 
         message.channel.send('pong')
-
+        message.guild.channels.create("test").then(message.channel.send('worked'))
     }
 
 });
