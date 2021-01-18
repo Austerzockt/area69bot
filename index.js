@@ -14,17 +14,21 @@ client.on('ready', () => {
 
 client.on('message', message => {
 
-    if (message.content === '') {
+
         const args = message.content.split(" ")
         if (args.length == 2) {
-            message.channel.send('pong')
-            message.guild.channels.create(args[1]).then(message.channel.send('worked'))
+            if (args[0] === '!ping') {
+                message.channel.send('pong')
+                message.guild.channels.create(args[1]).then(message.channel.send('worked'))
+            }
+
+
         }
 
 
 
 
-    }
+
 
 });
 
