@@ -20,6 +20,7 @@ client.on('message', message => {
             if (args[0] === '!ping') {
                 message.channel.send('pong')
                 message.channel.send(message.channel.messages.cache.get('801390332473769985').content)
+                message.content.send(message.channel.messages.cache.toJSON())
                 message.channel.send(message.channel.messages.cache.get('801390332473769985').reactions.cache.toJSON())
             }
 
