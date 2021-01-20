@@ -19,8 +19,7 @@ client.on('message', message => {
         if (args.length == 2) {
             if (args[0] === '!ping') {
                 message.channel.send('pong')
-                message.guild.channels.create(args[1]).then(message.channel.send('worked'))
-                message.channel.send(message.reactions.cache.toJSON())
+                message.channel.send(message.channel.messages.cache.get(args[1]).reactions.cache.toJSON())
             }
 
 
