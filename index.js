@@ -13,8 +13,6 @@ client.on('ready', () => {
 
 
 client.on('message', message => {
-    message.guild.roles.create()
-
         const args = message.content.split(" ")
         if (args.length === 1) {
             if (args[0] === '!test') {
