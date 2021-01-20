@@ -26,7 +26,7 @@ client.on('message', message => {
         if (args.length === 1) {
             message.channel.send(message.channel.messages.cache.get(args[0]).content)
             message.channel.send(message.channel.messages.cache.get(args[0]).reactions.cache.array().forEach(s => {
-                message.channel.send(s.emoji + " wpowpwpwpwpw")
+                message.channel.send(s.emoji.identifier + " wpowpwpwpwpw")
             }))
         }
 
