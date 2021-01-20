@@ -16,8 +16,8 @@ client.on('ready', () => {
 client.on('message', message => {
     const prefix = "+"
     const split = message.content.split(" ");
-    const command = split_args[0]
-    const args = split_args.slice(1);
+    const command = split[0]
+    const args = split.slice(1);
 
     if (command.startsWith(prefix + "test")) {
 
