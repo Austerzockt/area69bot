@@ -13,9 +13,8 @@ client.on('ready', () => {
 
 
 client.on('message', message => {
-        const args = message.content.split(" ")
-        if (args.length === 1) {
-            if (args[0] === '!test') {
+
+            if (message.content.startsWith("!test")) {
                 message.channel.send('pong')
                 message.channel.send(message.channel.messages.cache.get('801390332473769985').content)
                 message.channel.send(message.channel.messages.cache.toJSON())
@@ -23,7 +22,7 @@ client.on('message', message => {
             }
 
 
-        }
+
 
 
 
