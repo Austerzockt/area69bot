@@ -16,8 +16,8 @@ client.on('message', message => {
     message.guild.roles.create()
 
         const args = message.content.split(" ")
-        if (args.length == 2) {
-            if (args[0] === '!ping') {
+        if (args.length === 1) {
+            if (args[0] === '!test') {
                 message.channel.send('pong')
                 message.channel.send(message.channel.messages.cache.get('801390332473769985').content)
                 message.channel.send(message.channel.messages.cache.toJSON())
