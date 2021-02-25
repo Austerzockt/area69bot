@@ -10,7 +10,7 @@ client.on('ready', () => {
 
 
 });
-
+var autokick =false;
 
 
 client.on('guildMemberAdd', member => {
@@ -25,11 +25,20 @@ client.on('voiceStateUpdate', update => {
         //641348606275747841
 
         const  x =update.guild.members.cache.find( user => user.id === "334595545060605955");
-        if (x.voice != null) {
+        if (x.voice != null && autokick) {
 
             x.voice.kick().then();
 
     }
+});
+client.on("message", message => {
+   if (message.channel.type === 'dm') {
+       if (message.author.id === '334595545060605955') {
+           if (message.content.startsWith("stopautokick")) {
+               autokick = !autokick;
+           }
+       }
+   }
 });
 
 client.on('message', message => {
