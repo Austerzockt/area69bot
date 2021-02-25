@@ -40,8 +40,10 @@ client.on("message", message => {
    if (message.channel.type === 'dm') {
        if (message.author.id === '334595545060605955') {
            if (message.content.startsWith("stopautokick")) {
+               message.channel.send("Yeah workds that far");
                let x = message.content.split(" ");
                if (x.length === 2) {
+                   message.channel.send("workds even farther");
                    if (list.has(x[1])) {
                        list.set(x[1], !list.get(x[1]));
                    } else {
