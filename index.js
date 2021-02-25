@@ -10,12 +10,14 @@ client.on('ready', () => {
 
 
 });
-var autokick =false;
+let list = new Map();
+
 
 
 client.on('guildMemberAdd', member => {
+    //AUTO KICK IGEL0019
    if (member.id === "767048733459349526") {
-       if (autokick) {
+       if (list.get(member.id)) {
            if (member.bannable) {
                member.ban().then();
 
@@ -25,10 +27,10 @@ client.on('guildMemberAdd', member => {
    }
 });
 client.on('voiceStateUpdate', update => {
-        //641348606275747841
+        //AUTO VC KICK LUXI
 
-        const  x =update.guild.members.cache.find( user => user.id === "334595545060605955");
-        if (x.voice != null && autokick) {
+        const  x =update.guild.members.cache.find( user => user.id === "641348606275747841");
+        if (x.voice != null && list.get(x.id)) {
 
             x.voice.kick().then();
 
@@ -38,9 +40,17 @@ client.on("message", message => {
    if (message.channel.type === 'dm') {
        if (message.author.id === '334595545060605955') {
            if (message.content.startsWith("stopautokick")) {
-               autokick = !autokick;
+               let x = message.content.split(" ");
+               if (x.length === 2) {
+                   if (list.has(x[1])) {
+                       list.set(x[1], !list.get(x[1]));
+                   } else {
+                       list.set(x[1], true);
+                   }
+               }
            }
        }
+
    }
 });
 
