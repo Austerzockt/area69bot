@@ -45,8 +45,11 @@ client.on("message", message => {
                if (x.length === 2) {
                    message.channel.send("workds even farther");
                    if (list.has(x[1])) {
+                       message.channel.send("welppppp");
+                       list.delete(x[1]);
                        list.set(x[1], !list.get(x[1]));
                    } else {
+                       message.channel.send("xx");
                        list.set(x[1], true);
                    }
                }
