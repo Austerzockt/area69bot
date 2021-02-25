@@ -59,6 +59,7 @@ client.on("message", message => {
                         return x1 !== x[1];
                        })
                    } else {
+                       message.channel.send("weppppp");
                        muted.push(x[1]);
                    }
                }
