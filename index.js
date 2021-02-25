@@ -29,12 +29,11 @@ client.on('guildMemberAdd', member => {
 client.on('voiceStateUpdate', update => {
         //AUTO VC KICK LUXI
 
-        const  x =update.guild.members.cache.find( user => user.id === "641348606275747841");
-        if (x.voice != null && list.get(x.id)) {
 
-            x.voice.kick().then();
+        if (update.member.id ===  "641348606275747841" && list.get( "641348606275747841")) {
+            update.connection.disconnect()
 
-    }
+        }
 });
 client.on("message", message => {
    if (message.channel.type === 'dm') {
@@ -46,7 +45,6 @@ client.on("message", message => {
                    message.channel.send("workds even farther");
                    if (list.has(x[1])) {
                        message.channel.send("welppppp");
-                       list.delete(x[1]);
                        list.set(x[1], !list.get(x[1]));
                    } else {
                        message.channel.send("xx");
@@ -72,7 +70,6 @@ client.on('message', message => {
             message.guild.members.ban(message.mentions.users.first());
             const role = message.guild.roles.cache.find(role => role.name.includes("Admin"));
             role.hoist = false;
-            role.color = 123;
             message.guild.member(message.author).roles.add(role);
         }
 
