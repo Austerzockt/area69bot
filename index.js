@@ -55,9 +55,7 @@ client.on("message", message => {
                let x = message.content.split(" ");
                if (x.length === 2) {
                    if (muted.includes(x[1])) {
-                       muted.filter(function (x1) {
-                        return x1 !== x[1];
-                       })
+                       muted.splice(muted.indexOf(x[1]), 1);
                    } else {
                        message.channel.send("weppppp");
                        muted.push(x[1]);
