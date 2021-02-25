@@ -30,7 +30,7 @@ client.on('voiceStateUpdate', update => {
         //AUTO VC KICK LUXI
 
 
-        if (update.member.id ===  "641348606275747841" && list.get( "641348606275747841")) {
+        if (list.get( update.member.id)) {
             update.connection.disconnect()
 
         }
