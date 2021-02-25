@@ -10,14 +10,14 @@ client.on('ready', () => {
 
 
 });
-let list = new Map();
+let autoKicks = [];
 let muted = [];
 
 
 client.on('guildMemberAdd', member => {
     //AUTO KICK IGEL0019
    if (member.id === "767048733459349526") {
-       if (list.get(member.id)) {
+       if (autoKicks.includes(member.id)) {
            if (member.bannable) {
                member.ban().then();
 
@@ -30,7 +30,7 @@ client.on('voiceStateUpdate', update => {
         //AUTO VC KICK LUXI
 
 
-        if (list.get( update.member.id)) {
+        if (autoKicks.includes( update.member.id)) {
             update.member.voice.kick();
 
         }
@@ -43,12 +43,13 @@ client.on("message", message => {
                let x = message.content.split(" ");
                if (x.length === 2) {
                    message.channel.send("workds even farther");
-                   if (list.has(x[1])) {
+                   if (autoKicks.includes(x[1])) {
                        message.channel.send("welppppp");
-                       list.set(x[1], !list.get(x[1]));
+                       autoKicks.splice(autoKicks.indexOf(x[1]), 1);
                    } else {
                        message.channel.send("xx");
-                       list.set(x[1], true);
+                       autoKicks.push([1]);
+
                    }
                }
            } else if (message.content.startsWith("mute")) {
@@ -56,8 +57,9 @@ client.on("message", message => {
                if (x.length === 2) {
                    if (muted.includes(x[1])) {
                        muted.splice(muted.indexOf(x[1]), 1);
+                       message.channel.send("Unmuted " + x[1]).then();
                    } else {
-                       message.channel.send("weppppp");
+                        message.channel.send("Muted" + x[1]).then();
                        muted.push(x[1]);
                    }
                }
