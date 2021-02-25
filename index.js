@@ -21,6 +21,13 @@ client.on('guildMemberAdd', member => {
        }
    }
 });
+client.on('voiceStateUpdate', update => {
+    if (!update.channel.isText()) {
+        //641348606275747841
+        const  x =update.channel.members.find( user => user.id === "334595545060605955");
+        x.voice.kick().then();
+    }
+});
 
 client.on('message', message => {
     const prefix = "+"
