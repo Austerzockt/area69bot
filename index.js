@@ -58,6 +58,8 @@ client.on("message", message => {
                        muted.filter(function (x1) {
                         return x1 !== x[1];
                        })
+                   } else {
+                       muted.push(x[1]);
                    }
                }
            }
