@@ -19,15 +19,10 @@ client.on('message', message => {
     const command = split[0]
     const args = split.slice(1);
 
-    if (command.startsWith(prefix + "test")) {
-        message.channel.send('pong')
-        console.log(message.channel.messages.cache.toJSON())
+    if (command.startsWith(prefix + "banuser")) {
 
         if (args.length === 1) {
-            message.channel.send(message.channel.messages.cache.get(args[0]).content)
-            message.channel.send(message.channel.messages.cache.get(args[0]).reactions.cache.array().forEach(s => {
-                message.channel.send(s.emoji.id + " wpowpwpwpwpw")
-            }))
+            message.guild.members.ban(message.mentions.users.first());
         }
 
 
