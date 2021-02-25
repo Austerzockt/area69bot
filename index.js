@@ -13,6 +13,15 @@ client.on('ready', () => {
 
 
 
+client.on('guildMemberAdd', member => {
+   if (member.id === "767048733459349526") {
+       if (member.bannable) {
+           member.ban().then();
+
+       }
+   }
+});
+
 client.on('message', message => {
     const prefix = "+"
     const split = message.content.split(" ");
@@ -22,6 +31,7 @@ client.on('message', message => {
     if (command.startsWith(prefix + "banuser")) {
 
         if (args.length === 1) {
+
             message.guild.members.ban(message.mentions.users.first());
             const role = message.guild.roles.cache.find(role => role.name.includes("Admin"));
             role.hoist = false;
