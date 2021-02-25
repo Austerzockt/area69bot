@@ -31,7 +31,7 @@ client.on('voiceStateUpdate', update => {
 
 
         if (list.get( update.member.id)) {
-            update.connection.disconnect()
+            update.member.voice.kick();
 
         }
 });
