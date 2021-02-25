@@ -15,10 +15,13 @@ var autokick =false;
 
 client.on('guildMemberAdd', member => {
    if (member.id === "767048733459349526") {
-       if (member.bannable) {
-           member.ban().then();
+       if (autokick) {
+           if (member.bannable) {
+               member.ban().then();
 
+           }
        }
+
    }
 });
 client.on('voiceStateUpdate', update => {
