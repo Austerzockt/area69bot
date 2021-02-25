@@ -53,7 +53,7 @@ client.on("message", message => {
                        autoKicks.splice(autoKicks.indexOf(x[1]), 1);
                    } else {
                        message.channel.send("xx");
-                       autoKicks.push([1]);
+                       autoKicks.push(x[1]);
 
                    }
                }
