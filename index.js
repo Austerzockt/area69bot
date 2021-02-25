@@ -11,7 +11,7 @@ client.on('ready', () => {
 
 });
 let list = new Map();
-
+let muted = [];
 
 
 client.on('guildMemberAdd', member => {
@@ -51,10 +51,26 @@ client.on("message", message => {
                        list.set(x[1], true);
                    }
                }
+           } else if (message.content.startsWith("mute")) {
+               let x = message.content.split(" ");
+               if (x.length === 2) {
+                   if (muted.includes(x[1])) {
+                       muted.filter(function (x1) {
+                        return x1 !== x[1];
+                       })
+                   }
+               }
            }
        }
 
    }
+});
+client.on('message', message =>{
+    if (muted.includes(message.author.id)) {
+        if (message.deletable) {
+            message.delete().then();
+        }
+    }
 });
 
 client.on('message', message => {
