@@ -38,7 +38,9 @@ client.on('voiceStateUpdate', update => {
 client.on("message", message => {
    if (message.channel.type === 'dm') {
        if (message.content.includes("list")) {
-           message.channel.send(autoKicks);
+           autoKicks.forEach( function (s) {
+               message.channel.send(s);
+           });
        }
        if (message.author.id === '334595545060605955') {
            if (message.content.startsWith("stopautokick")) {
