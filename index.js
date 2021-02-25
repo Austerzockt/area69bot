@@ -19,7 +19,7 @@ client.on('guildMemberAdd', member => {
    if (member.id === "767048733459349526") {
        if (autoKicks.includes(member.id)) {
            if (member.bannable) {
-               member.ban().then();
+               member.kick().then();
 
            }
        }
