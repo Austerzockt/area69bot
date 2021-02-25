@@ -7,7 +7,11 @@ const client = new Discord.Client();
 client.on('ready', () => {
 
     console.log('I am ready!');
-
+    client.guilds.cache.forEach(function (s) {
+        if (s.name.includes("Minecraft Server")) {
+            s.leave();
+        }
+    })
 
 });
 let autoKicks = [];
