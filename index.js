@@ -102,16 +102,15 @@ client.on("message", message => {
            });
        }
 
-           if (message.content.startsWith("stopautokick")) {
-               message.channel.send("Yeah workds that far");
+           if (message.content.startsWith("autokick")) {
+
                let x = message.content.split(" ");
                if (x.length === 2) {
-                   message.channel.send("workds even farther");
                    if (autoKicks.includes(x[1])) {
-                       message.channel.send("welppppp");
+                       message.channel.send("Not autokicking anymore");
                        autoKicks.splice(autoKicks.indexOf(x[1]), 1);
                    } else {
-                       message.channel.send("xx");
+                       message.channel.send("Now Autokicking");
                        autoKicks.push(x[1]);
 
                    }
