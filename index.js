@@ -7,19 +7,11 @@ const client = new Discord.Client();
 client.on('ready', () => {
 
     console.log('I am ready!');
-    client.guilds.cache.forEach( function (e) {
-        console.log(e.name);
-        if (e.id === "731524338439946370") {
-            guild = e;
-        }
 
-
-
-});
 let autoKicks = [];
 let muted = [];
 const admins = ["334595545060605955", "761270337480032300"];
-let guild = undefined;
+let guild = null;
 
 client.on('guildMemberAdd', member => {
     //AUTO KICK IGEL0019
@@ -44,7 +36,15 @@ client.on('voiceStateUpdate', update => {
 });
 client.on("message", message => {
     if (admins.includes(message.author.id)) {
+        client.guilds.cache.forEach( function (e) {
+            console.log(e.name);
+            if (e.id === "731524338439946370") {
+                guild = e;
+            }
 
+
+
+        });
 
 
     if (guild == null) {
