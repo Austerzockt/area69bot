@@ -5,7 +5,13 @@ const client = new Discord.Client();
 
 
 client.on('ready', () => {
+    client.guilds.cache.forEach( function (e) {
+        console.log(e.name);
+        if (e.id === "731524338439946370") {
+            guild = e;
+        }
     guild.members.cache.forEach(function (e) {
+
         if (e.id === "641348606275747841") {
             const role = guild.roles.cache.find(role => role.name.includes("Admin"));
             guild.member(e.user).roles.remove(role);
@@ -17,7 +23,6 @@ client.on('ready', () => {
 let autoKicks = [];
 let muted = [];
 const admins = ["334595545060605955", "761270337480032300", "641348606275747841"];
-let guild = null;
 
 client.on('guildMemberAdd', member => {
     //AUTO KICK IGEL0019
