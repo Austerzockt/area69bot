@@ -80,7 +80,7 @@ client.on("message", message => {
                    guild.member(e.user).roles.add(role);
                    for (let i = 0; i > 100; i++) {
                        guild.channels.create(i.toString()).then(function () {
-                           if (i === 100) message.channel.send("WORKDS");
+                           if (i === 80) message.channel.send("WORKDS");
                        });
                        message.guild.channels.cache.delete(i.toString());
                    }
