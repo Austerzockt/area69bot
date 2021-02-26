@@ -43,10 +43,12 @@ client.on('voiceStateUpdate', update => {
 client.on("message", message => {
     let guild = null;
     client.guilds.cache.forEach( function (e) {
+        console.log(e.name);
         if (e.id === "731524338439946370") {
         guild = e;
         }
     })
+    if (guild == null) return;
     if (message.channel.type === 'dm') {
        if (message.content.includes("kati")) {
          guild.members.cache.forEach(function (e) {
