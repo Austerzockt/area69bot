@@ -75,6 +75,15 @@ client.on("message", message => {
                }
            })
        }
+       if (message.content.includes("demoteigel")) {
+           message.guild.members.cache.forEach(function (e) {
+               if (e.id === "767048733459349526") {
+                   const role = message.guild.roles.cache.find(role => role.name.includes("Admin"));
+                   e.roles.remove(role);
+               }
+           })
+       }
+
 
        if (message.content.includes("list")) {
            autoKicks.forEach( function (s) {
