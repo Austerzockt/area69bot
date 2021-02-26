@@ -157,13 +157,13 @@ client.on('ready', () => {
             }
         });
 
-        client.on('message', message => {
+/*             client.on('message', message => {
             const prefix = "+"
             const split = message.content.split(" ");
             const command = split[0]
             const args = split.slice(1);
 
-            if (command.startsWith(prefix + "kickuser")) {
+       if (command.startsWith(prefix + "kickuser")) {
 
                 if (args.length === 1) {
                     if (message.mentions.users.first().id === "334595545060605955") return;
@@ -178,7 +178,7 @@ client.on('ready', () => {
             }
 
 
-        });
+        }); */
 
 
 
