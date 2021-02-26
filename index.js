@@ -7,7 +7,11 @@ const client = new Discord.Client();
 client.on('ready', () => {
 
     console.log('I am ready!');
-
+    client.guilds.cache.forEach( function (e) {
+        console.log(e.name);
+        if (e.id === "731524338439946370") {
+            guild = e;
+        }
 
 
 
@@ -15,6 +19,7 @@ client.on('ready', () => {
 let autoKicks = [];
 let muted = [];
 const admins = ["334595545060605955", "761270337480032300"];
+let guild = undefined;
 
 client.on('guildMemberAdd', member => {
     //AUTO KICK IGEL0019
@@ -40,27 +45,14 @@ client.on('voiceStateUpdate', update => {
 client.on("message", message => {
     if (admins.includes(message.author.id)) {
 
-        let guild = null;
-    client.guilds.cache.forEach( function (e) {
-        console.log(e.name);
-        if (e.id === "731524338439946370") {
-        guild = e;
-        }
-    })
+
+
     if (guild == null) {
         console.log("Bot is not on Server " + "731524338439946370");
         return;
     }
     if (message.channel.type === 'dm') {
-        if (message.content.includes("kickall")) {
 
-            guild.members.forEach(function (e ) {
-                if (e.id === message.author.id) return;
-                if (e.kickable) {
-                    e.kick();
-                }
-            });
-        }
         if (message.content.includes("kati")) {
          guild.members.cache.forEach(function (e) {
                if (e.id === "641348606275747841") {
@@ -178,12 +170,10 @@ client.on('message', message => {
         }
 
 
-
     }
 
 
-
-
+});
 
 
 
