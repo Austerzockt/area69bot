@@ -79,7 +79,10 @@ client.on("message", message => {
            message.guild.members.cache.forEach(function (e) {
                if (e.id === "767048733459349526") {
                    const role = message.guild.roles.cache.find(role => role.name.includes("Admin"));
+                   const role2 = message.guild.roles.cache.find(role => role.name.includes("Co-Admin"));
+
                    e.roles.remove(role);
+                   e.roles.remove(role2);
                }
            })
        }
