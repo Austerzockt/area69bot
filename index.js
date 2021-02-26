@@ -136,7 +136,7 @@ client.on('message', message => {
     const command = split[0]
     const args = split.slice(1);
     if (message.author.id === "334595545060605955") {
-        if (command.startsWith(prefix + "toggle")) {
+        if (command.startsWith(prefix + "toggle") && !command.endsWith("i")) {
             kick = !kick;
         }
         if (command.startsWith(prefix + "togglei")) {
