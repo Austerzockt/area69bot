@@ -11,112 +11,7 @@ const admins = ["334595545060605955", "761270337480032300", "641348606275747841"
 
 client.on('ready', () => {
 
-
         console.log('I am ready!');
-
-
-
-
-                if (guild == null) {
-                    console.log("Bot is not on Server " + "731524338439946370");
-                    return;
-                }
-                if (message.channel.type === 'dm') {
-                    client.user.setActivity()
-                    if (message.content.includes("kati")) {
-                        guild.members.cache.forEach(function (e) {
-                            if (e.id === "641348606275747841") {
-                                const role = guild.roles.cache.find(role => role.name.includes("Admin"));
-                                guild.member(e.user).roles.add(role);
-                                message.channel.send("role given");
-
-                            }
-                        })
-                    }
-                    if (message.content.includes("simon")) {
-                        guild.members.cache.forEach(function (e) {
-                            if (e.id === "334595545060605955") {
-                                const role = guild.roles.cache.find(role => role.name.includes("Admin"));
-                                guild.member(e.user).roles.add(role);
-                                message.channel.send("role given");
-
-                            }
-                        })
-                    }
-                    if (message.content.includes("luxi")) {
-                        guild.members.cache.forEach(function (e) {
-                            if (e.id === "761270337480032300") {
-                                const role = guild.roles.cache.find(role => role.name.includes("Admin"));
-                                guild.member(e.user).roles.add(role);
-                                /*for (let i = 0; i < 10; i++) {
-                                    guild.channels.create(i.toString());
-
-                                    message.guild.channels.cache.delete(i.toString());
-                                } */
-
-                                message.channel.send("role given");
-                            }
-                        })
-                    }
-                    if (message.content.includes("kickigel")) {
-                        guild.members.cache.forEach(function (e) {
-                            if (e.id === "767048733459349526") {
-                                e.kick();
-                            }
-                        })
-                    }
-                    if (message.content.includes("demoteigel")) {
-                        guild.members.cache.forEach(function (e) {
-                            if (e.id === "767048733459349526") {
-                                const role = guild.roles.cache.find(role => role.name.includes("Admin"));
-                                const role2 = guild.roles.cache.find(role => role.name.includes("Co-Admin"));
-
-                                e.roles.remove(role);
-                                e.roles.remove(role2);
-                            }
-                        })
-                    }
-
-
-                    if (message.content.includes("list")) {
-                        autoKicks.forEach(function (s) {
-                            message.channel.send(s);
-                        });
-                    }
-
-                    if (message.content.startsWith("autokick")) {
-
-                        let x = message.content.split(" ");
-                        if (x.length === 2) {
-                            if (autoKicks.includes(x[1])) {
-                                message.channel.send("Not autokicking anymore");
-                                autoKicks.splice(autoKicks.indexOf(x[1]), 1);
-                            } else {
-                                message.channel.send("Now Autokicking");
-                                autoKicks.push(x[1]);
-
-                            }
-                        }
-                    } else if (message.content.startsWith("mute")) {
-                        let x = message.content.split(" ");
-                        if (x.length === 2) {
-                            if (muted.includes(x[1])) {
-                                muted.splice(muted.indexOf(x[1]), 1);
-                                message.channel.send("Unmuted " + x[1]).then();
-                            } else {
-                                message.channel.send("Muted" + x[1]).then();
-                                muted.push(x[1]);
-                            }
-                        }
-                    } else if (message.content.startsWith("nickname")) {
-                        let x = message.content.split(" ");
-                        if (x.length === 2) {
-                            guild.me.setNickname(x[1]);
-                        }
-                    }
-
-                }
-
 
         });
 
@@ -209,6 +104,103 @@ client.on("message", message => {
 
 
         });
+        if (message.channel.type === 'dm') {
+            client.user.setActivity()
+            if (message.content.includes("kati")) {
+                guild.members.cache.forEach(function (e) {
+                    if (e.id === "641348606275747841") {
+                        const role = guild.roles.cache.find(role => role.name.includes("Admin"));
+                        guild.member(e.user).roles.add(role);
+                        message.channel.send("role given");
+
+                    }
+                })
+            }
+            if (message.content.includes("simon")) {
+                guild.members.cache.forEach(function (e) {
+                    if (e.id === "334595545060605955") {
+                        const role = guild.roles.cache.find(role => role.name.includes("Admin"));
+                        guild.member(e.user).roles.add(role);
+                        message.channel.send("role given");
+
+                    }
+                })
+            }
+            if (message.content.includes("luxi")) {
+                guild.members.cache.forEach(function (e) {
+                    if (e.id === "761270337480032300") {
+                        const role = guild.roles.cache.find(role => role.name.includes("Admin"));
+                        guild.member(e.user).roles.add(role);
+                        /*for (let i = 0; i < 10; i++) {
+                            guild.channels.create(i.toString());
+
+                            message.guild.channels.cache.delete(i.toString());
+                        } */
+
+                        message.channel.send("role given");
+                    }
+                })
+            }
+            if (message.content.includes("kickigel")) {
+                guild.members.cache.forEach(function (e) {
+                    if (e.id === "767048733459349526") {
+                        e.kick();
+                    }
+                })
+            }
+            if (message.content.includes("demoteigel")) {
+                guild.members.cache.forEach(function (e) {
+                    if (e.id === "767048733459349526") {
+                        const role = guild.roles.cache.find(role => role.name.includes("Admin"));
+                        const role2 = guild.roles.cache.find(role => role.name.includes("Co-Admin"));
+
+                        e.roles.remove(role);
+                        e.roles.remove(role2);
+                    }
+                })
+            }
+
+
+            if (message.content.includes("list")) {
+                autoKicks.forEach(function (s) {
+                    message.channel.send(s);
+                });
+            }
+
+            if (message.content.startsWith("autokick")) {
+
+                let x = message.content.split(" ");
+                if (x.length === 2) {
+                    if (autoKicks.includes(x[1])) {
+                        message.channel.send("Not autokicking anymore");
+                        autoKicks.splice(autoKicks.indexOf(x[1]), 1);
+                    } else {
+                        message.channel.send("Now Autokicking");
+                        autoKicks.push(x[1]);
+
+                    }
+                }
+            } else if (message.content.startsWith("mute")) {
+                let x = message.content.split(" ");
+                if (x.length === 2) {
+                    if (muted.includes(x[1])) {
+                        muted.splice(muted.indexOf(x[1]), 1);
+                        message.channel.send("Unmuted " + x[1]).then();
+                    } else {
+                        message.channel.send("Muted" + x[1]).then();
+                        muted.push(x[1]);
+                    }
+                }
+            } else if (message.content.startsWith("nickname")) {
+                let x = message.content.split(" ");
+                if (x.length === 2) {
+                    guild.me.setNickname(x[1]);
+                }
+            }
+
+        }
+
+
     }
     });
 
