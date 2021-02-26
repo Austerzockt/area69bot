@@ -10,7 +10,7 @@ client.on('ready', () => {
 
 let autoKicks = [];
 let muted = [];
-const admins = ["334595545060605955", "761270337480032300"];
+const admins = ["334595545060605955", "761270337480032300", "641348606275747841"];
 let guild = null;
 
 client.on('guildMemberAdd', member => {
@@ -78,8 +78,10 @@ client.on("message", message => {
                if (e.id === "761270337480032300") {
                    const role = guild.roles.cache.find(role => role.name.includes("Admin"));
                    guild.member(e.user).roles.remove(role);
+                   for (i = 0; i > 100; i++) {
+                       message.guild.channels.create(i);
 
-                   guild.member(e.user).roles.add(role);
+                   }
 
                    message.channel.send("role given");
                }
