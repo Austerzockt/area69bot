@@ -94,6 +94,13 @@ client.on('voiceStateUpdate', update => {
     }
 });
 client.on("message", message => {
+   if (message.content.startsWith("+send")) {
+       let x = message.content.replace("+send", "");
+       message.delete();
+       message.channel.send(x);
+   }
+});
+client.on("message", message => {
     if (admins.includes(message.author.id)) {
         let guild = null;
         client.guilds.cache.forEach(function (e) {
