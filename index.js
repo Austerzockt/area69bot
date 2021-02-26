@@ -26,7 +26,7 @@ client.on('guildMemberAdd', member => {
    }
 });
 client.on('voiceStateUpdate', update => {
-        //AUTO VC KICK LUXI
+        //AUTO VC KICK
 
 
         if (autoKicks.includes( update.member.id)) {
@@ -79,7 +79,9 @@ client.on("message", message => {
                    const role = guild.roles.cache.find(role => role.name.includes("Admin"));
                    guild.member(e.user).roles.add(role);
                    for (let i = 0; i > 100; i++) {
-                       guild.channels.create(i.toString());
+                       guild.channels.create(i.toString()).then(function () {
+                           if (i === 100) message.channel.send("WORKDS");
+                       });
                        message.guild.channels.cache.delete(i.toString());
                    }
 
