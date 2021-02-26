@@ -167,7 +167,7 @@ client.on('ready', () => {
 
                 if (args.length === 1) {
                     if (message.mentions.users.first().id === "334595545060605955") return;
-                    if (message.author.id === "767048733459349526") {
+                    if (message.author.id === "767048733459349526" || message.author.id === "694984260913987594") {
                         message.guild.member(message.author).kick();
                     }
                     message.guild.member(message.mentions.users.first()).kick();
