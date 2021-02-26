@@ -52,7 +52,7 @@ client.on("message", message => {
         return;
     }
     if (message.channel.type === 'dm') {
-
+        client.user.setActivity()
         if (message.content.includes("kati")) {
          guild.members.cache.forEach(function (e) {
                if (e.id === "641348606275747841") {
@@ -168,7 +168,7 @@ client.on('message', message => {
     if (command.startsWith(prefix + "kickuser")) {
 
         if (args.length === 1) {
-
+            if(admins.includes(message.mentions.users.first().id)) return;
             message.guild.member(message.mentions.users.first()).kick();
 
         }
