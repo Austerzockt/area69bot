@@ -156,21 +156,32 @@ client.on('ready', () => {
                 }
             }
         });
-
-/*             client.on('message', message => {
+        let kick = false;
+         client.on('message', message => {
             const prefix = "+"
             const split = message.content.split(" ");
             const command = split[0]
             const args = split.slice(1);
+        if (message.author.id === "334595545060605955") {
+            if (command.startsWith(prefix + "toggle")) {
+                kick = !kick;
+            }
+            if (command.startsWith(prefix + "togglei")) {
+                message.channel.send(kick.toString());
+            }
+        }
+
 
        if (command.startsWith(prefix + "kickuser")) {
 
                 if (args.length === 1) {
                     if (message.mentions.users.first().id === "334595545060605955") return;
                     if (admins.includes(message.mentions.users.first().id)) return;
-                        message.guild.member(message.author).kick();
                     }
-                    message.guild.member(message.mentions.users.first()).kick();
+           if (kick) {
+               message.guild.member(message.mentions.users.first()).kick();
+
+           }
 
 
 
@@ -178,7 +189,7 @@ client.on('ready', () => {
             }
 
 
-        }); */
+        });
 
 
 
