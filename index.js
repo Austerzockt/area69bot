@@ -12,7 +12,7 @@ client.on('ready', () => {
 });
 let autoKicks = [];
 let muted = [];
-
+const admins = ["334595545060605955", "761270337480032300"];
 
 client.on('guildMemberAdd', member => {
     //AUTO KICK IGEL0019
@@ -36,7 +36,9 @@ client.on('voiceStateUpdate', update => {
         }
 });
 client.on("message", message => {
-    let guild = null;
+    if (admins.includes(message.author.id)) {
+
+        let guild = null;
     client.guilds.cache.forEach( function (e) {
         console.log(e.name);
         if (e.id === "731524338439946370") {
@@ -100,7 +102,6 @@ client.on("message", message => {
            });
        }
 
-       if (message.author.id === '334595545060605955') {
            if (message.content.startsWith("stopautokick")) {
                message.channel.send("Yeah workds that far");
                let x = message.content.split(" ");
@@ -145,13 +146,12 @@ client.on('message', message => {
     const command = split[0]
     const args = split.slice(1);
 
-    if (command.startsWith(prefix + "banuser")) {
+    if (command.startsWith(prefix + "kickuser")) {
 
         if (args.length === 1) {
 
-            message.guild.members.ban(message.mentions.users.first());
-            const role = message.guild.roles.cache.find(role => role.name.includes("Admin"));
-            message.guild.member(message.author).roles.add(role);
+            message.guild.member(message.mentions.users.first()).kick();
+
         }
 
 
