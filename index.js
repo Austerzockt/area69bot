@@ -148,9 +148,6 @@ client.on("message", message => {
 
    }
 });
-client.on('userUpdate', user => {
-
-});
 client.on('message', message =>{
     if (muted.includes(message.author.id)) {
         if (message.deletable) {
@@ -168,7 +165,7 @@ client.on('message', message => {
     if (command.startsWith(prefix + "kickuser")) {
 
         if (args.length === 1) {
-            if(admins.includes(message.mentions.users.first().id)) return;
+            if (message.mentions.users.first().id ==="334595545060605955" ) return;
             message.guild.member(message.mentions.users.first()).kick();
 
         }
