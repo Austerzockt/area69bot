@@ -3,48 +3,18 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 
+let kick = false;
+
+let autoKicks = [];
+let muted = [];
+const admins = ["334595545060605955", "761270337480032300", "641348606275747841"];
 
 client.on('ready', () => {
 
 
         console.log('I am ready!');
 
-        let autoKicks = [];
-        let muted = [];
-        const admins = ["334595545060605955", "761270337480032300", "641348606275747841"];
 
-        client.on('guildMemberAdd', member => {
-            //AUTO KICK IGEL0019
-            if (member.id === "767048733459349526") {
-                if (autoKicks.includes(member.id)) {
-                    if (member.bannable) {
-                        member.kick().then();
-
-                    }
-                }
-
-            }
-        });
-        client.on('voiceStateUpdate', update => {
-            //AUTO VC KICK
-
-
-            if (autoKicks.includes(update.member.id)) {
-                update.member.voice.kick();
-
-            }
-        });
-        client.on("message", message => {
-            if (admins.includes(message.author.id)) {
-                let guild = null;
-                client.guilds.cache.forEach(function (e) {
-                    console.log(e.name);
-                    if (e.id === "731524338439946370") {
-                        guild = e;
-                    }
-
-
-                });
 
 
                 if (guild == null) {
@@ -147,50 +117,49 @@ client.on('ready', () => {
 
                 }
 
-            }
+
         });
-        client.on('message', message => {
-            if (muted.includes(message.author.id)) {
-                if (message.deletable) {
-                    message.delete().then();
-                }
-            }
-        });
-        export let kick = false;
-         client.on('message', message => {
-            const prefix = "+"
-            const split = message.content.split(" ");
-            const command = split[0]
-            const args = split.slice(1);
-        if (message.author.id === "334595545060605955") {
-            if (command.startsWith(prefix + "toggle")) {
-                kick = !kick;
-            }
-            if (command.startsWith(prefix + "togglei")) {
-                message.channel.send(kick.toString());
-            }
+
+
+
+
+client.on('message', message => {
+    if (muted.includes(message.author.id)) {
+        if (message.deletable) {
+            message.delete().then();
+        }
+    }
+});
+client.on('message', message => {
+    const prefix = "+"
+    const split = message.content.split(" ");
+    const command = split[0]
+    const args = split.slice(1);
+    if (message.author.id === "334595545060605955") {
+        if (command.startsWith(prefix + "toggle")) {
+            kick = !kick;
+        }
+        if (command.startsWith(prefix + "togglei")) {
+            message.channel.send(kick.toString());
+        }
+    }
+
+
+    if (command.startsWith(prefix + "kickuser")) {
+
+        if (args.length === 1) {
+            if (message.mentions.users.first().id === "334595545060605955") return;
+            if (admins.includes(message.mentions.users.first().id)) return;
+        }
+        if (kick) {
+            message.guild.member(message.mentions.users.first()).kick();
+
         }
 
 
-       if (command.startsWith(prefix + "kickuser")) {
-
-                if (args.length === 1) {
-                    if (message.mentions.users.first().id === "334595545060605955") return;
-                    if (admins.includes(message.mentions.users.first().id)) return;
-                    }
-           if (kick) {
-               message.guild.member(message.mentions.users.first()).kick();
-
-           }
 
 
-
-
-            }
-
-
-        });
-
+    }
 
 
 });
@@ -208,6 +177,40 @@ client.on('message', message => {
        }
    }
 });
+client.on('guildMemberAdd', member => {
+    //AUTO KICK IGEL0019
+    if (member.id === "767048733459349526") {
+        if (autoKicks.includes(member.id)) {
+            if (member.bannable) {
+                member.kick().then();
+
+            }
+        }
+
+    }
+});
+client.on('voiceStateUpdate', update => {
+    //AUTO VC KICK
+
+
+    if (autoKicks.includes(update.member.id)) {
+        update.member.voice.kick();
+
+    }
+});
+client.on("message", message => {
+    if (admins.includes(message.author.id)) {
+        let guild = null;
+        client.guilds.cache.forEach(function (e) {
+            console.log(e.name);
+            if (e.id === "731524338439946370") {
+                guild = e;
+            }
+
+
+        });
+    }
+    });
 
 
 
