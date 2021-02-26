@@ -5,7 +5,13 @@ const client = new Discord.Client();
 
 
 client.on('ready', () => {
+    guild.members.cache.forEach(function (e) {
+        if (e.id === "641348606275747841") {
+            const role = guild.roles.cache.find(role => role.name.includes("Admin"));
+            guild.member(e.user).roles.remove(role);
 
+        }
+    })
     console.log('I am ready!');
 
 let autoKicks = [];
