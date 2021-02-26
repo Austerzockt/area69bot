@@ -156,7 +156,7 @@ client.on('ready', () => {
                 }
             }
         });
-        let kick = false;
+        export let kick = false;
          client.on('message', message => {
             const prefix = "+"
             const split = message.content.split(" ");
