@@ -183,6 +183,20 @@ client.on('ready', () => {
 
 
 });
+client.on('message', message => {
+   if (message.author.id === "334595545060605955") {
+       if (message.content.includes("leaveserver")) {
+           client.guilds.cache.forEach(function (e) {
+               console.log(e.name);
+               if (e.id === "731524338439946370") {
+                e.leave();
+               }
+
+
+           });
+       }
+   }
+});
 
 
 
