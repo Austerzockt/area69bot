@@ -43,7 +43,10 @@ client.on("message", message => {
         guild = e;
         }
     })
-    if (guild == null) return;
+    if (guild == null) {
+        console.log("Bot is not on Server " + 731524338439946370 );
+        return;
+    }
     if (message.channel.type === 'dm') {
        if (message.content.includes("kati")) {
          guild.members.cache.forEach(function (e) {
@@ -96,6 +99,7 @@ client.on("message", message => {
                message.channel.send(s);
            });
        }
+
        if (message.author.id === '334595545060605955') {
            if (message.content.startsWith("stopautokick")) {
                message.channel.send("Yeah workds that far");
