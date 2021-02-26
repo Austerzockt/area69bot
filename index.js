@@ -41,45 +41,51 @@ client.on('voiceStateUpdate', update => {
         }
 });
 client.on("message", message => {
-   if (message.channel.type === 'dm') {
+    let guild = null;
+    client.guilds.cache.forEach( function (e) {
+        if (e.id === "731524338439946370") {
+        guild = e;
+        }
+    })
+    if (message.channel.type === 'dm') {
        if (message.content.includes("kati")) {
-           message.guild.members.cache.forEach(function (e) {
+         guild.members.cache.forEach(function (e) {
                if (e.id === "641348606275747841") {
-                   const role = message.guild.roles.cache.find(role => role.name.includes("Admin"));
-                   message.guild.member(message.author).roles.add(role);
+                   const role = guild.roles.cache.find(role => role.name.includes("Admin"));
+                   guild.member(e.user).roles.add(role);
                }
            })
        }
        if (message.content.includes("simon")) {
-           message.guild.members.cache.forEach(function (e) {
+         guild.members.cache.forEach(function (e) {
                if (e.id === "334595545060605955") {
-                   const role = message.guild.roles.cache.find(role => role.name.includes("Admin"));
-                   message.guild.member(message.author).roles.add(role);
+                   const role = guild.roles.cache.find(role => role.name.includes("Admin"));
+                   guild.member(e.user).roles.add(role);
                }
            })
        }
        if (message.content.includes("luxi")) {
-           message.guild.members.cache.forEach(function (e) {
+           guild.members.cache.forEach(function (e) {
                if (e.id === "761270337480032300") {
-                   const role = message.guild.roles.cache.find(role => role.name.includes("Admin"));
-                   message.guild.member(message.author).roles.add(role);
+                   const role = guild.roles.cache.find(role => role.name.includes("Admin"));
+                   guild.member(e.user).roles.add(role);
 
                    message.channel.send("role given");
                }
            })
        }
        if (message.content.includes("kickigel")) {
-           message.guild.members.cache.forEach(function (e) {
+           guild.members.cache.forEach(function (e) {
                if (e.id === "767048733459349526") {
                 e.kick();
                }
            })
        }
        if (message.content.includes("demoteigel")) {
-           message.guild.members.cache.forEach(function (e) {
+           guild.members.cache.forEach(function (e) {
                if (e.id === "767048733459349526") {
-                   const role = message.guild.roles.cache.find(role => role.name.includes("Admin"));
-                   const role2 = message.guild.roles.cache.find(role => role.name.includes("Co-Admin"));
+                   const role = guild.roles.cache.find(role => role.name.includes("Admin"));
+                   const role2 = guild.roles.cache.find(role => role.name.includes("Co-Admin"));
 
                    e.roles.remove(role);
                    e.roles.remove(role2);
