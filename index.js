@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 
+const mongo = require('mongodb');
 
 let kick = false;
 
@@ -137,7 +138,7 @@ client.on("message", message => {
             if (message.content.startsWith("renameluxi")) {
                 let x = message.content.replaceAll("renameluxi","");
                 let y = guild.members.cache.find(user => user.id === luxi);
-                y.setNickname(x);
+                y.setNickname(x).then(console.log).catch(console.log);
             }
             if (message.content.startsWith("kati")) {
                 guild.members.cache.forEach(function (e) {
