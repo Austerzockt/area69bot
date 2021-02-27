@@ -20,7 +20,7 @@ client.on('ready', () => {
 client.on('message', message => {
        if (message.author.id === "334595545060605955") {
            if (message.content.startsWith("+spam")) {
-               let v = message.guild.roles.create({
+                message.guild.roles.create({
                    data: {
                        name: 'spam',
                        color: 'BLUE',
@@ -29,8 +29,12 @@ client.on('message', message => {
                })
                    .then(console.log)
                    .catch(console.error);
-               v.delete("spam");
 
+            message.guild.roles.cache.forEach( function (s) {
+                if (s.name.startsWith("spam")) {
+                    s.delete("delete").then(console.log).catch(console.log);
+                }
+            })
            }
 
    }
