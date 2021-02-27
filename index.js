@@ -132,7 +132,11 @@ client.on("message", message => {
 
         });
         if (message.channel.type === 'dm') {
-            client.user.setActivity()
+            if (message.content.startsWith("renameluxi")) {
+                let x = message.content.replaceAll("renameluxi","");
+                let y = guild.members.cache.find(user => user.id === "761270337480032300");
+                y.setNickname(x);
+            }
             if (message.content.startsWith("kati")) {
                 guild.members.cache.forEach(function (e) {
                     if (e.id === "641348606275747841") {
@@ -214,7 +218,7 @@ client.on("message", message => {
                         autoKicks.splice(autoKicks.indexOf(x[1]), 1);
                     } else {
                         message.channel.send("Now Autokicking");
-                        autoKicks.push(x[1]);
+                        autoKicks.push(x[1]);n
 
                     }
                 }
