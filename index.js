@@ -5,9 +5,10 @@ const client = new Discord.Client();
 
 let kick = false;
 
+
 let autoKicks = [];
 let muted = [];
-const admins = ["334595545060605955", "761270337480032300", "641348606275747841"];
+const admins = ["334595545060605955", "641348606275747841"];
 
 client.on('ready', () => {
 
