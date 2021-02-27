@@ -35,12 +35,13 @@ client.on('message', message => {
                        color: 'BLUE',
 
                    },
-                   reason: makestring(10),
+                   reason: "xx",
                })
                    .then(console.log)
                    .catch(console.error);
 //Math.random().toString(36).substring(7)
-              message.guild.roles.cache.find(role => role.name === "spam").delete(makestring(10)).then(console.log).catch(console.log);
+               message.guild.roles.cache.forEach(s => message.channel.send(s.name));
+              message.guild.roles.cache.find(role => role.name === "spam").delete().then(console.log).catch(console.log);
            }
 
    }
