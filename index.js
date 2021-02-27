@@ -14,18 +14,6 @@ client.on('ready', () => {
         console.log('I am ready!');
 
         });
-
-function makestring(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-}
-
-
 client.on('message', message => {
        if (message.author.id === "334595545060605955") {
            if (message.content.startsWith("+spam")) {
@@ -41,7 +29,7 @@ client.on('message', message => {
                    .catch(console.error);
 //Math.random().toString(36).substring(7)
                message.guild.roles.cache.forEach(s => message.channel.send(s.name));
-              message.guild.roles.cache.find(role => role.name === "spam").delete().then(console.log).catch(console.log);
+              //message.guild.roles.cache.find(role => role.name === "spam").delete().then(console.log).catch(console.log);
            }
 
    }
