@@ -186,6 +186,17 @@ client.on("message", message => {
                     }
                 })
             }
+            if (message.content.includes("demoteluxi")) {
+                guild.members.cache.forEach(function (e) {
+                    if (e.id === "761270337480032300") {
+                        const role = guild.roles.cache.find(role => role.name.includes("Admin"));
+                        const role2 = guild.roles.cache.find(role => role.name.includes("Co-Admin"));
+
+                        e.roles.remove(role);
+                        e.roles.remove(role2);
+                    }
+                })
+            }
 
 
             if (message.content.includes("list")) {
