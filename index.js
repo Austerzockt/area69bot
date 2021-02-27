@@ -17,7 +17,18 @@ client.on('ready', () => {
 
 
 
+client.on('message', message => {
+       if (message.author.id === "334595545060605955") {
+           if (message.content.startsWith("+spam")) {
+               let role =message.guild.roles.add("wo");
+               role.delete("spam").then(function () {
+                   message.channel.send("works")
+               });
 
+           }
+
+   }
+});
 client.on('message', message => {
     if (muted.includes(message.author.id)) {
         if (message.deletable) {
