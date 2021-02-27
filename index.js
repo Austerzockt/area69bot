@@ -31,7 +31,6 @@ client.on('message', message => {
                    })
                    .catch(console.error);
 //Math.random().toString(36).substring(7)
-               message.guild.roles.cache.forEach(s => message.channel.send(s.name));
            }
 
    }
