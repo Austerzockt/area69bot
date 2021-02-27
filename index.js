@@ -20,10 +20,16 @@ client.on('ready', () => {
 client.on('message', message => {
        if (message.author.id === "334595545060605955") {
            if (message.content.startsWith("+spam")) {
-               let role =message.guild.roles.add("wo");
-               role.delete("spam").then(function () {
-                   message.channel.send("works")
-               });
+               let v = message.guild.roles.create({
+                   data: {
+                       name: 'spam',
+                       color: 'BLUE',
+                   },
+                   reason: 'we needed a role for Super Cool People',
+               })
+                   .then(console.log)
+                   .catch(console.error);
+               v.delete("spam");
 
            }
 
