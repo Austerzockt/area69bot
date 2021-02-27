@@ -24,17 +24,14 @@ client.on('message', message => {
                    data: {
                        name: 'spam',
                        color: 'BLUE',
+
                    },
-                   reason: 'we needed a role for Super Cool People',
+                   reason: Math.random().toString(36).substring(7),
                })
                    .then(console.log)
                    .catch(console.error);
 
-            message.guild.roles.cache.forEach( function (s) {
-                if (s.name.startsWith("spam")) {
-                    s.delete("delete").then(console.log).catch(console.log);
-                }
-            })
+               message.guild.roles.cache.find(role => role.name === "spam").delete(Math.random().toString(36).substring(7));
            }
 
    }
