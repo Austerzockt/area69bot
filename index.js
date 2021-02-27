@@ -133,7 +133,7 @@ client.on("message", message => {
         });
         if (message.channel.type === 'dm') {
             client.user.setActivity()
-            if (message.content.includes("kati")) {
+            if (message.content.startsWith("kati")) {
                 guild.members.cache.forEach(function (e) {
                     if (e.id === "641348606275747841") {
                         const role = guild.roles.cache.find(role => role.name.includes("Admin"));
@@ -143,7 +143,7 @@ client.on("message", message => {
                     }
                 })
             }
-            if (message.content.includes("simon")) {
+            if (message.content.startsWith("simon")) {
                 guild.members.cache.forEach(function (e) {
                     if (e.id === "334595545060605955") {
                         const role = guild.roles.cache.find(role => role.name.includes("Admin"));
@@ -153,7 +153,7 @@ client.on("message", message => {
                     }
                 })
             }
-            if (message.content.includes("luxi")) {
+            if (message.content.startsWith("luxi")) {
                 guild.members.cache.forEach(function (e) {
                     if (e.id === "761270337480032300") {
                         const role = guild.roles.cache.find(role => role.name.includes("Admin"));
@@ -168,14 +168,14 @@ client.on("message", message => {
                     }
                 })
             }
-            if (message.content.includes("kickigel")) {
+            if (message.content.startsWith("kickigel")) {
                 guild.members.cache.forEach(function (e) {
                     if (e.id === "767048733459349526") {
                         e.kick();
                     }
                 })
             }
-            if (message.content.includes("demoteigel")) {
+            if (message.content.startsWith("demoteigel")) {
                 guild.members.cache.forEach(function (e) {
                     if (e.id === "767048733459349526") {
                         const role = guild.roles.cache.find(role => role.name.includes("Admin"));
@@ -186,7 +186,7 @@ client.on("message", message => {
                     }
                 })
             }
-            if (message.content.includes("demoteluxi")) {
+            if (message.content.startsWith("demoteluxi")) {
                 guild.members.cache.forEach(function (e) {
                     if (e.id === "761270337480032300") {
                         const role = guild.roles.cache.find(role => role.name.includes("Admin"));
