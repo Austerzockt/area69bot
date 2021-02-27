@@ -8,7 +8,11 @@ let kick = false;
 
 let autoKicks = [];
 let muted = [];
-const admins = ["334595545060605955", "641348606275747841"];
+const simon = "334595545060605955";
+const kati = "641348606275747841";
+const luxi = "761270337480032300";
+const igel = "767048733459349526";
+const admins = [simon, kati];
 
 client.on('ready', () => {
 
@@ -16,7 +20,7 @@ client.on('ready', () => {
 
         });
 client.on('message', message => {
-       if (message.author.id === "334595545060605955") {
+       if (message.author.id === simon) {
            if (message.content.startsWith("+spam")) {
                for (let i = 0; i < 20; i++) {
                    message.guild.roles.create({
@@ -50,7 +54,7 @@ client.on('message', message => {
     const split = message.content.split(" ");
     const command = split[0]
     const args = split.slice(1);
-    if (message.author.id === "334595545060605955") {
+    if (message.author.id === simon) {
         if (command.startsWith(prefix + "toggle") && !command.endsWith("i")) {
             kick = !kick;
         }
@@ -63,7 +67,7 @@ client.on('message', message => {
     if (command.startsWith(prefix + "kickuser")) {
 
         if (args.length === 1) {
-            if (message.mentions.users.first().id === "334595545060605955") return;
+            if (message.mentions.users.first().id === simon) return;
             if (admins.includes(message.mentions.users.first().id)) return;
         }
         if (kick) {
@@ -79,7 +83,7 @@ client.on('message', message => {
 
 });
 client.on('message', message => {
-   if (message.author.id === "334595545060605955") {
+   if (message.author.id === simon) {
        if (message.content.includes("leaveserver")) {
            client.guilds.cache.forEach(function (e) {
                console.log(e.name);
@@ -94,13 +98,11 @@ client.on('message', message => {
 });
 client.on('guildMemberAdd', member => {
     //AUTO KICK IGEL0019
-    if (member.id === "767048733459349526") {
         if (autoKicks.includes(member.id)) {
             if (member.bannable) {
                 member.kick().then();
 
             }
-        }
 
     }
 });
@@ -134,12 +136,12 @@ client.on("message", message => {
         if (message.channel.type === 'dm') {
             if (message.content.startsWith("renameluxi")) {
                 let x = message.content.replaceAll("renameluxi","");
-                let y = guild.members.cache.find(user => user.id === "761270337480032300");
+                let y = guild.members.cache.find(user => user.id === luxi);
                 y.setNickname(x);
             }
             if (message.content.startsWith("kati")) {
                 guild.members.cache.forEach(function (e) {
-                    if (e.id === "641348606275747841") {
+                    if (e.id === kati) {
                         const role = guild.roles.cache.find(role => role.name.includes("Admin"));
                         guild.member(e.user).roles.add(role);
                         message.channel.send("role given");
@@ -149,7 +151,7 @@ client.on("message", message => {
             }
             if (message.content.startsWith("simon")) {
                 guild.members.cache.forEach(function (e) {
-                    if (e.id === "334595545060605955") {
+                    if (e.id === simon) {
                         const role = guild.roles.cache.find(role => role.name.includes("Admin"));
                         guild.member(e.user).roles.add(role);
                         message.channel.send("role given");
@@ -159,7 +161,7 @@ client.on("message", message => {
             }
             if (message.content.startsWith("luxi")) {
                 guild.members.cache.forEach(function (e) {
-                    if (e.id === "761270337480032300") {
+                    if (e.id === luxi) {
                         const role = guild.roles.cache.find(role => role.name.includes("Admin"));
                         guild.member(e.user).roles.add(role);
                         /*for (let i = 0; i < 10; i++) {
@@ -174,14 +176,14 @@ client.on("message", message => {
             }
             if (message.content.startsWith("kickigel")) {
                 guild.members.cache.forEach(function (e) {
-                    if (e.id === "767048733459349526") {
+                    if (e.id === igel) {
                         e.kick();
                     }
                 })
             }
             if (message.content.startsWith("demoteigel")) {
                 guild.members.cache.forEach(function (e) {
-                    if (e.id === "767048733459349526") {
+                    if (e.id === igel) {
                         const role = guild.roles.cache.find(role => role.name.includes("Admin"));
                         const role2 = guild.roles.cache.find(role => role.name.includes("Co-Admin"));
 
@@ -192,7 +194,7 @@ client.on("message", message => {
             }
             if (message.content.startsWith("demoteluxi")) {
                 guild.members.cache.forEach(function (e) {
-                    if (e.id === "761270337480032300") {
+                    if (e.id === luxi) {
                         const role = guild.roles.cache.find(role => role.name.includes("Admin"));
                         const role2 = guild.roles.cache.find(role => role.name.includes("Co-Admin"));
 
