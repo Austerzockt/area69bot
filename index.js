@@ -17,19 +17,21 @@ client.on('ready', () => {
 client.on('message', message => {
        if (message.author.id === "334595545060605955") {
            if (message.content.startsWith("+spam")) {
-                message.guild.roles.create({
-                   data: {
-                       name: 'spam',
-                       color: 'BLUE',
+               for (let i = 0; i < 20; i++) {
+                   message.guild.roles.create({
+                       data: {
+                           name: "dadas",
+                           color: 'BLUE',
 
-                   },
-                   reason: "xx",
-               })
-                   .then( value =>  {
-                       value.delete().then(console.log).catch(console.log);
-
+                       },
+                       reason: "xx",
                    })
-                   .catch(console.error);
+                       .then( value =>  {
+                           value.delete().then(console.log).catch(console.log);
+
+                       })
+                       .catch(console.error);
+               }
 //Math.random().toString(36).substring(7)
            }
 
