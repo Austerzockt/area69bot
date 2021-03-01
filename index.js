@@ -16,8 +16,7 @@ const igel = "767048733459349526";
 const admins = [simon, kati];
 
 client.on('ready', () => {
-
-        console.log('I am ready!');
+    client.user.setActivity('@Groovy 2', { type: 'LISTENING' });        console.log('I am ready!');
 
         });
 client.on('message', message => {
