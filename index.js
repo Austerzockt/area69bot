@@ -46,6 +46,7 @@ client.on('messageDelete', message => {
                 id: message.author.id,
                 name: message.author.username
             },
+            id: message.id,
             content: message.content
         }).then(function (){
             mongoClient.close();
