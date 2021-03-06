@@ -44,8 +44,9 @@ client.on('messageDelete', message => {
         mongoClient.db("messages").collection("deleted").insertOne({
             author: message.author,
             content: message.content
+        }).then(function (){
+            mongoClient.close();
         });
-        mongoClient.close();
     })
 
 });
