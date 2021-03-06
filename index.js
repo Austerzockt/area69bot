@@ -7,11 +7,7 @@ const MongoClient = require('mongodb').MongoClient;
 
 const uri = process.env.MONGO_URL;
 const mongoClient = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-mongoClient.connect(err => {
-    const collection = mongoClient.db("test").collection("devices");
-    // perform actions on the collection object
-    mongoClient.close();
-});
+
 
 class MyUser {
 
@@ -43,6 +39,14 @@ function getAdmins() {
     return returns;
 }
 client.on('messageDelete', message => {
+    mongoClient.connect( error => {
+
+        mongoClient.db("messages").collection("deleted").insertOne({
+            author: message.author,
+            content: message.content
+        });
+        mongoClient.close();
+    })
 
 });
 client.on('ready', () => {
