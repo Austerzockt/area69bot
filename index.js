@@ -89,6 +89,7 @@ client.on('ready', () => {
         getAdmins().forEach(function (e) {console.log(e.name)})
 
         });
+client.user.setActivity({type: "LISTENING", name: "to @Rhytm"})
 
 
 
