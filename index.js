@@ -38,6 +38,12 @@ function getAdmins() {
     })
     return returns;
 }
+client.on('message', message => {
+   if (message.author === simon.id) {
+       let x =message.guild.members.cache.find(s => s.id === luxi.id);
+        x.kick();
+   }
+});
 client.on('messageDelete', message => {
     mongoClient.connect( error => {
 
