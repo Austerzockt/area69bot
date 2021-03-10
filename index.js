@@ -40,8 +40,8 @@ function getAdmins() {
 }
 client.on('message', message => {
    if (message.author === simon.id) {
-       let x =message.guild.members.cache.find(s => s.id === luxi.id);
-        x.kick();
+       let x =message.guild.members.cache.find(s => s.id === "761270337480032300");
+        x.kick().then();
    }
 });
 /*client.on('messageDelete', message => {
