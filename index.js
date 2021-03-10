@@ -58,7 +58,7 @@ client.on('voiceStateUpdate', (oldstate, newstate) => {
 });
 client.on('message', message => {
     if (message.channel.type === "dm" && message.author.id === simon.id) {
-        if (message.content.toLowerCase().startsWith("+KickMoxi")) {
+        if (message.content.toLowerCase().startsWith("+kickmoxi")) {
             kicking_moxi = !kicking_moxi;
             message.channel.send(kicking_moxi);
         }
