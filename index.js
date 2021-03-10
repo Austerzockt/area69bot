@@ -3,10 +3,10 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 
-const MongoClient = require('mongodb').MongoClient;
+//const MongoClient = require('mongodb').MongoClient;
 
-const uri = process.env.MONGO_URL;
-const mongoClient = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+//const uri = process.env.MONGO_URL;
+//const mongoClient = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 class MyUser {
@@ -44,7 +44,7 @@ client.on('message', message => {
         x.kick();
    }
 });
-client.on('messageDelete', message => {
+/*client.on('messageDelete', message => {
     mongoClient.connect( error => {
 
         mongoClient.db("messages").collection("deleted").insertOne({
@@ -59,7 +59,7 @@ client.on('messageDelete', message => {
         });
     })
 
-});
+}); */
 client.on('ready', () => {
         console.log("READY");
         console.log("Admins: ");
