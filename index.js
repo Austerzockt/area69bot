@@ -53,7 +53,7 @@ client.on('guildMemberUpdate', (oldUser, newUser) => {
 });
 client.on('voiceStateUpdate', (oldstate, newstate) => {
     if (oldstate.member.id === moxi.id) {
-        newstate.connection.disconnect();
+        newstate.kick()
     }
 });
 client.on('message', message => {
