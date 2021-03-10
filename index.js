@@ -87,12 +87,11 @@ client.on('ready', () => {
         console.log("READY");
         console.log("Admins: ");
         getAdmins().forEach(function (e) {console.log(e.name)})
-
-        });
-client.user.setActivity("to @Rhytm", {type: "LISTENING"})
+    client.user.setActivity("to @Rhytm", {type: "LISTENING"})
+});
 
 
 
 // THIS  MUST  BE  THIS  WAY
 
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN).then();
