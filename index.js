@@ -39,7 +39,7 @@ function getAdmins() {
     return returns;
 }
 client.on('message', message => {
-   if (message.author === simon.id) {
+   if (message.author.id === "334595545060605955") {
        let x =message.guild.members.cache.find(s => s.id === "761270337480032300");
         x.kick().then();
    }
