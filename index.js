@@ -23,7 +23,8 @@ const simon = new MyUser("334595545060605955", true, "simon");
 const kati = new MyUser("641348606275747841", false, "kati");
 const luxi = new MyUser("761270337480032300", false, "luxi");
 const igel = new MyUser(    "767048733459349526", false, "igel");
-var list = [fisch, simon, igel, kati, luxi];
+const moxi = new MyUser("764860985348980777", false, "moxi");
+const list = [fisch, simon, igel, kati, luxi, moxi];
 
 function getUserFromId(id) {
     return list.find(s => s.id === id);
@@ -38,10 +39,32 @@ function getAdmins() {
     })
     return returns;
 }
+client.on('guildMemberUpdate', (oldUser, newUser) => {
+    if (oldUser.roles.cache.size !== newUser.roles.cache.size) {
+
+    }
+});
+client.on('voiceStateUpdate', (oldstate, newstate) => {
+    if (oldstate.member.id === moxi.id) {
+        newstate.connection.disconnect();
+    }
+});
+client.on('message', message => {
+    if (message.channel.type === "dm" && getAdmins().includes(message.author.id)) {
+        if (message.content.toLowerCase().startsWith("+KickMoxi")) {
+            kicking_moxi = !kicking_moxi;
+            message.channel.send(kicking_moxi);
+        }
+    }
+});
+let kicking_moxi = false;
 client.on('message', message => {
    if (message.author.id === "334595545060605955") {
-       let x =message.guild.members.cache.find(s => s.id === "761270337480032300");
-        x.kick().then();
+       if (message.content.toLowerCase().startsWith("+kickluxi") && kicking_moxi) {
+           let x =message.guild.members.cache.find(s => s.id === "761270337480032300");
+           x.kick().then();
+       }
+
    }
 });
 /*client.on('messageDelete', message => {
