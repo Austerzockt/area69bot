@@ -39,6 +39,13 @@ function getAdmins() {
     })
     return returns;
 }
+function isAdmin(id) {
+    getAdmins().forEach(function (value) {
+        if (value.id === id) return true;
+    });
+    return false;
+
+}
 client.on('guildMemberUpdate', (oldUser, newUser) => {
     if (oldUser.roles.cache.size !== newUser.roles.cache.size) {
 
@@ -50,7 +57,7 @@ client.on('voiceStateUpdate', (oldstate, newstate) => {
     }
 });
 client.on('message', message => {
-    if (message.channel.type === "dm" && getAdmins().includes(message.author.id)) {
+    if (message.channel.type === "dm" && isAdmin(message.author.id)) {
         if (message.content.toLowerCase().startsWith("+KickMoxi")) {
             kicking_moxi = !kicking_moxi;
             message.channel.send(kicking_moxi);
