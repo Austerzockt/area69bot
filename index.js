@@ -3,10 +3,10 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 
-//const MongoClient = require('mongodb').MongoClient;
+const MongoClient = require('mongodb').MongoClient;
 
-//const uri = process.env.MONGO_URL;
-//const mongoClient = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const uri = process.env.MONGO_URL;
+const mongoClient = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 class MyUser {
@@ -18,6 +18,7 @@ class MyUser {
         }
 }
 const FischsServer = "731524338439946370";
+const TestServer = "652598539381243934";
 const fisch = new MyUser("694984260913987594", false, "fisch");
 const simon = new MyUser("334595545060605955", true, "simon");
 const kati = new MyUser("641348606275747841", false, "kati");
@@ -46,50 +47,46 @@ function isAdmin(id) {
     return false;
 
 }
-client.on('guildMemberUpdate', (oldUser, newUser) => {
-    if (oldUser.roles.cache.size !== newUser.roles.cache.size) {
+const PREFIX = "+";
+function parseCommand(message) {
+    if (message.content.startsWith(PREFIX)) {
+        const args = message.content.slice(1).split(' ');
+        const cmd = args.shift().toLowerCase();
+        return {command: cmd, args: args};
+    }
+}
+client.on('message', async message => {
+   if (message.channel.type === "dm" && message.author.id === simon.id) {
+        const COMMAND = parseCommand(message);
+        if (COMMAND.command === "save-all") {
+            const g = client.guilds.cache.find(s => s.id === FischsServer);
+            var messages = [];
+            for await (const message1 in loadAllMessages(g.channels.cache.find(s => s.id === "652598539381243937"))) {
+            messages.push(message1.content);
+            }
+            await message.channel.send(messages);
 
-    }
-});
-client.on('voiceStateUpdate', (oldstate, newstate) => {
-    if (oldstate.member.id === moxi.id) {
-        newstate.kick()
-    }
-});
-client.on('message', message => {
-    if (message.channel.type === "dm" && message.author.id === simon.id) {
-        if (message.content.toLowerCase().startsWith("+kickmoxi")) {
-            kicking_moxi = !kicking_moxi;
-            message.channel.send(kicking_moxi);
         }
-    }
-});
-let kicking_moxi = false;
-client.on('message', message => {
-   if (message.author.id === "334595545060605955") {
-       if (message.content.toLowerCase().startsWith("+kickluxi") && kicking_moxi) {
-           let x =message.guild.members.cache.find(s => s.id === "761270337480032300");
-           x.kick().then();
-       }
-
    }
 });
-/*client.on('messageDelete', message => {
-    mongoClient.connect( error => {
+async function * messagesIterator (channel) {
+    let before = null
+    let done = false
+    while (!done) {
+        const messages = await channel.messages.fetch({ limit: 100, before })
+        if (messages.size > 0) {
+            before = messages.lastKey()
+            yield messages
+        } else done = true
+    }
+}
 
-        mongoClient.db("messages").collection("deleted").insertOne({
-            author: {
-                id: message.author.id,
-                name: message.author.username
-            },
-            id: message.id,
-            content: message.content
-        }).then(function (){
-            mongoClient.close();
-        });
-    })
+async function * loadAllMessages (channel) {
+    for await (const messages of messagesIterator(channel)) {
+        for (const message of messages.values()) yield message
+    }
+}
 
-}); */
 client.on('ready', () => {
         console.log("READY");
         console.log("Admins: ");
